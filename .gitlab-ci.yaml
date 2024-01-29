@@ -1,7 +1,0 @@
-image: maven:4.0.0-openjdk-11
-stages:
-  -test
-test-all:
-  stage: test
-  script:
-      -mvn clean test
