@@ -1,6 +1,12 @@
 image: maven:4.0.0-openjdk-11
+
+default:
+  tags:
+    - shelllocal
+
 stages:
   - test
+  
 test-all:
   stage: test
   script:
