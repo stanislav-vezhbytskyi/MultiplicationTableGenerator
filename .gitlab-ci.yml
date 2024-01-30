@@ -1,11 +1,16 @@
-pipeline:
-  image: maven:4.0.0-openjdk-11
+image: maven:4.0.0-openjdk-11
+
+default:
+  tags:
+    - shelllocal
+
 stages:
   - test
+  
 test-all:
   stage: test
   script:
-   - mvn clean test
+    - mvn clean test
   artifacts:
-    paths:
-     - target/surefire-reports/*
+      paths:
+          - target/surefire-reports/*
