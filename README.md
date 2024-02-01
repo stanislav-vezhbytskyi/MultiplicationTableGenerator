@@ -15,14 +15,22 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
+<<<<<<< HEAD
 git remote add origin https://gitlab.com/code1221/practice2.git
+=======
+git remote add origin https://gitlab.com/shpp-projects/practice2.git
+>>>>>>> bbafbf5664d89b0d5037dfd7da3bf2c0806ac185
 git branch -M main
 git push -uf origin main
 ```
 
 ## Integrate with your tools
 
+<<<<<<< HEAD
 - [ ] [Set up project integrations](https://gitlab.com/code1221/practice2/-/settings/integrations)
+=======
+- [ ] [Set up project integrations](https://gitlab.com/shpp-projects/practice2/-/settings/integrations)
+>>>>>>> bbafbf5664d89b0d5037dfd7da3bf2c0806ac185
 
 ## Collaborate with your team
 
