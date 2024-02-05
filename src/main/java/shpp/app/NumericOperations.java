@@ -1,6 +1,6 @@
 package shpp.app;
 
-public class NumbersFactory {
+public class NumericOperations {
     private static final String INT = "int";
     private static final String DOUBLE = "double";
     private static final String FLOAT = "float";
@@ -8,10 +8,10 @@ public class NumbersFactory {
     private static final String LONG = "long";
     private static final String BYTE = "byte";
 
-    private NumbersFactory() {
+    private NumericOperations() {
     }
 
-    public static Number getNumber(String numbType, Number value) throws ArithmeticException {
+    public static Number convertNumber(String numbType, Number value) throws ArithmeticException {
         switch (numbType) {
             case INT:
                 return value.intValue();
@@ -39,11 +39,11 @@ public class NumbersFactory {
             case FLOAT:
                 return n1.floatValue() + n2.floatValue();
             case SHORT:
-                return n1.shortValue() + n2.shortValue();
+                return NumericOperations.convertNumber(SHORT,n1.shortValue() + n2.shortValue());
             case LONG:
                 return n1.longValue() + n2.longValue();
             case BYTE:
-                return n1.byteValue() + n2.byteValue();
+                return NumericOperations.convertNumber(BYTE,n1.byteValue() + n2.byteValue());
             default:
                 throw new IllegalArgumentException("incorrect type " + numbType);
         }

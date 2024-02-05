@@ -1,6 +1,5 @@
 package shpp.app;
 
-
 /**
  * Unit test for simple App.
  */
