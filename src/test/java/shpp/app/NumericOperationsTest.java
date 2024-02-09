@@ -7,24 +7,24 @@ class NumericOperationsTest {
     @Test
     void intTest(){
         Number number1 = new Integer(0);
-        Number number2 = NumericOperations.convertNumber("int",0);
+        Number number2 = NumericOperations.convertNumber(0,"int");
         Assertions.assertEquals(number1,number2);
     }
     @Test
     void floatTest(){
         Number number1 = (float) 0;
-        Number number2 = NumericOperations.convertNumber("float",0);
+        Number number2 = NumericOperations.convertNumber(0,"float");
         Assertions.assertEquals(number1,number2);
     }
     @Test
     void doubleTest(){
         Number number1 = (double) 0;
-        Number number2 = NumericOperations.convertNumber("double",0);
+        Number number2 = NumericOperations.convertNumber(0,"double");
         Assertions.assertEquals(number1,number2);
     }
     @Test
     void incorrectTypeTest(){
-        Assertions.assertThrows(IllegalArgumentException.class, ()-> NumericOperations.convertNumber("random string",0));
+        Assertions.assertThrows(IllegalArgumentException.class, ()-> NumericOperations.convertNumber(0,"random string"));
     }
     @Test
     void sumIntTest(){
