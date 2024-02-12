@@ -1,5 +1,6 @@
 package shpp.app;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -195,6 +196,24 @@ class NumericOperationsTest {
         Number b = 2.0;
         assertEquals(expected, NumericOperations.multiply(a, b, "double"));
     }
+    @Test
+    void multiplyOutOfBoundsForByte(){
+        byte a = Byte.MAX_VALUE-1;
+        Assertions.assertThrows(ArithmeticException.class, ()->NumericOperations.multiply(a,2,"byte"));
+
+    }
+    @Test
+    void multiplyOutOfBoundsForShort(){
+        short a = Short.MAX_VALUE-1;
+        Assertions.assertThrows(ArithmeticException.class, ()->NumericOperations.multiply(a,2,"short"));
+    }
+    @Test
+    void multiplyOutOfBoundsForInt(){
+        int a = Integer.MAX_VALUE-1;
+        Assertions.assertThrows(ArithmeticException.class, ()->NumericOperations.multiply(a,2,"int"));
+    }
+
+
     @Test
     void testCompareIntegers() {
         Number n1 = 5;

@@ -61,18 +61,16 @@ public class NumericOperations {
         checkRange(n2, numbType);
 
         switch (numbType) {
-            case INT:
-                return n1.intValue() + n2.intValue();
-            case DOUBLE:
-                return n1.doubleValue() + n2.doubleValue();
-            case FLOAT:
-                return n1.floatValue() + n2.floatValue();
-            case SHORT:
-                return NumericOperations.convertNumber(n1.shortValue() + n2.shortValue(), SHORT);
-            case LONG:
-                return n1.longValue() + n2.longValue();
             case BYTE:
-                return NumericOperations.convertNumber(n1.byteValue() + n2.byteValue(), BYTE);
+            case SHORT:
+            case INT:
+            case LONG:
+                return NumericOperations.convertNumber(n1.longValue() + n2.longValue(),numbType);
+
+            case FLOAT:
+            case DOUBLE:
+                return NumericOperations.convertNumber(n1.doubleValue() + n2.doubleValue(),numbType);
+
             default:
                 throw new IllegalArgumentException("incorrect type " + numbType);
         }
@@ -83,20 +81,18 @@ public class NumericOperations {
         checkRange(n2,numbType);
 
         switch (numbType) {
-            case INT:
-                return n1.intValue() * n2.intValue();
-            case DOUBLE:
-                return n1.doubleValue() * n2.doubleValue();
-            case FLOAT:
-                return n1.floatValue() * n2.floatValue();
-            case SHORT:
-                return NumericOperations.convertNumber(n1.shortValue() * n2.shortValue(), SHORT);
-            case LONG:
-                return n1.longValue() * n2.longValue();
             case BYTE:
-                return NumericOperations.convertNumber(n1.byteValue() * n2.byteValue(), BYTE);
+            case SHORT:
+            case INT:
+            case LONG:
+                return NumericOperations.convertNumber(n1.longValue() * n2.longValue(),numbType);
+
+            case FLOAT:
+            case DOUBLE:
+                return NumericOperations.convertNumber(n1.doubleValue() * n2.doubleValue(),numbType);
+
             default:
-                throw new IllegalArgumentException("Incorrect type " + numbType);
+                throw new IllegalArgumentException("incorrect type " + numbType);
         }
     }
 

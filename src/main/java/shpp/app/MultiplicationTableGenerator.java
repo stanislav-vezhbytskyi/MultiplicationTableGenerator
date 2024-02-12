@@ -1,51 +1,41 @@
 package shpp.app;
 
-import java.util.ArrayList;
-
 public class MultiplicationTableGenerator {
-    public ArrayList<ArrayList<Number>> generateTable(Number min, Number max, Number increment, String numbType) {
-        ArrayList<ArrayList<Number>> multiplicationTable = new ArrayList<>();
+    public Number[][] generateTable(Number min, Number max, Number increment, String numbType) {
+        int size = countTableSize(min,max,increment,numbType);
+        Number[][] multiplicationTable = new Number[size][size];
 
-        int size = arrSize(min,max,increment,numbType);
-        //Number[][] multiplicationTable = new Number[size][size];
-        //first horizontal row
-        ArrayList<Number> tableField = new ArrayList<>();
+        int k = 0;
         for (Number i = min; NumericOperations.compare(i, max, numbType) <= 0;
-             i = NumericOperations.sum(i, increment, numbType)) {
+             i = NumericOperations.sum(i, increment, numbType),k++) {
 
-            tableField.add(i);
+            multiplicationTable[0][k] = i;
         }
-        multiplicationTable.add(tableField);
 
-
+        k = 0;
         for (Number i = min; NumericOperations.compare(i, max, numbType) <= 0;
-             i = NumericOperations.sum(i, increment, numbType)) {
-            tableField = new ArrayList<>();
-            //vertical row of base numbers int the table
-            tableField.add(i);
+             i = NumericOperations.sum(i, increment, numbType),k++) {
 
-            //multiplication result
+            int f = 0;
             for (Number j = min; NumericOperations.compare(j, max, numbType) <= 0;
-                 j = NumericOperations.sum(j, increment, numbType)) {
+                 j = NumericOperations.sum(j, increment, numbType),f++) {
 
-                tableField.add(NumericOperations.multiply(i, j, numbType));
+                multiplicationTable[k][f] = NumericOperations.multiply(i, j, numbType);
             }
-
-            multiplicationTable.add(tableField);
         }
 
         return multiplicationTable;
     }
 
-    private static int arrSize(Number min, Number max, Number increment, String numbType) {
+    private static int countTableSize(Number min, Number max, Number increment, String numbType) {
         int size = 0;
         Number i = min;
 
-        while (NumericOperations.compare(i, max, numbType) >= 0) {
+        while (NumericOperations.compare(i, max, numbType) <= 0) {
             i = NumericOperations.sum(i, increment, numbType);
             size++;
         }
 
-        return size > 0 ? 1 : 0;
+        return size;
     }
 }

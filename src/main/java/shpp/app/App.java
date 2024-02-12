@@ -3,13 +3,12 @@ package shpp.app;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.Properties;
 
 public class App {
     private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
     private static final String NAME_OF_SYSTEM_PARAMETER_NUMBER_TYPE = "numberType";
-    private static final String DEFAULT_NUMBER_TYPE = "byte";
+    private static final String DEFAULT_NUMBER_TYPE = "int";
     private static final String MINIMUM_FIELD_NAME = "minimal";
     private static final String MAXIMUM_FIELD_NAME = "maximum";
     private static final String INCREMENT_FIELD_NAME = "increment";
@@ -41,8 +40,14 @@ public class App {
         Number max = NumericOperations.convertNumber(maxStr, numbType);
         Number increment = NumericOperations.convertNumber(incrementStr, numbType);
 
+
+        if(!PropertyValidator.isPropertyCorrect(min,max,increment,numbType)){
+            LOGGER.error("Property values is incorrect");
+            return;
+        }
+
         MultiplicationTableGenerator generator = new MultiplicationTableGenerator();
-        ArrayList<ArrayList<Number>> multiplicationTable = null;
+        Number[][] multiplicationTable = null;
 
         LOGGER.info("Building multiplication table");
         try {
