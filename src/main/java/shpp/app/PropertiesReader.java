@@ -29,7 +29,7 @@ public class PropertiesReader {
                 LOGGER.error(ex.toString(),ex);
             }
         } else {
-            LOGGER.error("properties not found");
+            LOGGER.error("property file not found");
         }
         return properties;
     }
