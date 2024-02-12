@@ -1,17 +1,41 @@
 package shpp.app;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MultiplicationTableGenerator {
-    public List<Number> generateTable(Number min, Number max, Number increment, String numbType) {
-        ArrayList<Number> multiplicationTable = new ArrayList<>();
+    public Number[][] generateTable(Number min, Number max, Number increment, String numbType) {
+        int size = countTableSize(min,max,increment,numbType);
+        Number[][] multiplicationTable = new Number[size][size];
 
-        for (Number i = min; !NumericOperations.leftIsBigger(i,max,numbType);
-             i = NumericOperations.sum(i,increment,numbType)) {
-            multiplicationTable.add(NumericOperations.convertNumber(numbType, i));
+        int k = 0;
+        for (Number i = min; NumericOperations.compare(i, max, numbType) <= 0;
+             i = NumericOperations.sum(i, increment, numbType),k++) {
+
+            multiplicationTable[0][k] = i;
+        }
+
+        k = 0;
+        for (Number i = min; NumericOperations.compare(i, max, numbType) <= 0;
+             i = NumericOperations.sum(i, increment, numbType),k++) {
+
+            int f = 0;
+            for (Number j = min; NumericOperations.compare(j, max, numbType) <= 0;
+                 j = NumericOperations.sum(j, increment, numbType),f++) {
+
+                multiplicationTable[k][f] = NumericOperations.multiply(i, j, numbType);
+            }
         }
 
         return multiplicationTable;
+    }
+
+    private static int countTableSize(Number min, Number max, Number increment, String numbType) {
+        int size = 0;
+        Number i = min;
+
+        while (NumericOperations.compare(i, max, numbType) <= 0) {
+            i = NumericOperations.sum(i, increment, numbType);
+            size++;
+        }
+
+        return size;
     }
 }
