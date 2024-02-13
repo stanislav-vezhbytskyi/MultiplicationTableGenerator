@@ -212,7 +212,11 @@ class NumericOperationsTest {
         int a = Integer.MAX_VALUE-1;
         Assertions.assertThrows(ArithmeticException.class, ()->NumericOperations.multiply(a,2,"int"));
     }
-
+    @Test
+    void multiplyOutOfBoundsForFloat(){
+        Float a = Float.MAX_VALUE-Float.MIN_VALUE;
+        Assertions.assertThrows(ArithmeticException.class, ()->NumericOperations.multiply(a,2,"float"));
+    }
 
     @Test
     void testCompareIntegers() {

@@ -129,7 +129,9 @@ public class NumericOperations {
                 // No range check for double
                 break;
             case FLOAT:
-                // No range check for float
+                if(value.doubleValue() > Float.MAX_VALUE || value.doubleValue() < -Float.MAX_VALUE){
+                    throw new ArithmeticException("Value "+value.doubleValue()+" out of range for float ");
+                }
                 break;
             case SHORT:
                 if (value.longValue() > Short.MAX_VALUE || value.longValue() < Short.MIN_VALUE) {
