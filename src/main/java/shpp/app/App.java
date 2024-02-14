@@ -42,7 +42,7 @@ public class App {
             LOGGER.error("Incorrect property values",e);
             return;
         }
-
+        //this class is too big
         if(!PropertyValidator.isPropertyCorrect(min,max,increment,numbType)){
             LOGGER.error("Property values is incorrect");
             return;
