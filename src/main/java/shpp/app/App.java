@@ -24,7 +24,7 @@ public class App {
             LOGGER.warn("no system parameter {}", NAME_OF_SYSTEM_PARAMETER_NUMBER_TYPE);
         }
 
-        PropertiesReader propertiesReader = new PropertiesReader();
+        PropertyReader propertiesReader = new PropertyReader();
         Properties properties = propertiesReader.readProperties(DEFAULT_EXTERNAL_PROPERTY_PATH);
 
         String minStr = properties.getProperty(MINIMUM_FIELD_NAME);
