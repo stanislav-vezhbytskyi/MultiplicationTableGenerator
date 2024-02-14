@@ -16,7 +16,6 @@ public class MultiplicationTableGenerator {
         for (Number i = min; NumericOperations.compare(i, max, numbType) <= 0;
              i = NumericOperations.sum(i, increment, numbType), k++) {
 
-
             int f = 1;
             multiplicationTable[k][0] = NumericOperations.convertNumber(i, numbType);
             for (Number j = min; NumericOperations.compare(j, max, numbType) <= 0;
