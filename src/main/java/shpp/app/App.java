@@ -31,15 +31,17 @@ public class App {
         String maxStr = properties.getProperty(MAXIMUM_FIELD_NAME);
         String incrementStr = properties.getProperty(INCREMENT_FIELD_NAME);
 
-        if (minStr == null || maxStr == null || incrementStr == null) {
-            LOGGER.error("Incorrect property variables");
+        Number min;
+        Number max;
+        Number increment;
+        try {
+            min = NumericOperations.convertNumber(minStr, numbType);
+            max = NumericOperations.convertNumber(maxStr, numbType);
+            increment = NumericOperations.convertNumber(incrementStr, numbType);
+        }catch (NumberFormatException e){
+            LOGGER.error("Incorrect property values",e);
             return;
         }
-
-        Number min = NumericOperations.convertNumber(minStr, numbType);
-        Number max = NumericOperations.convertNumber(maxStr, numbType);
-        Number increment = NumericOperations.convertNumber(incrementStr, numbType);
-
 
         if(!PropertyValidator.isPropertyCorrect(min,max,increment,numbType)){
             LOGGER.error("Property values is incorrect");
@@ -53,7 +55,7 @@ public class App {
         try {
             multiplicationTable = generator.generateTable(min, max, increment, numbType);
         } catch (ArithmeticException e) {
-            LOGGER.error(e.toString());
+            LOGGER.error("Table cannot be built",e);
         }
 
         ConsoleOutput consoleOutput = new ConsoleOutput();

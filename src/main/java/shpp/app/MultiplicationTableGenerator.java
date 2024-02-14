@@ -2,23 +2,25 @@ package shpp.app;
 
 public class MultiplicationTableGenerator {
     public Number[][] generateTable(Number min, Number max, Number increment, String numbType) {
-        int size = countTableSize(min,max,increment,numbType);
+        int size = countTableSize(min, max, increment, numbType);
         Number[][] multiplicationTable = new Number[size][size];
 
-        int k = 0;
+        int k = 1;
         for (Number i = min; NumericOperations.compare(i, max, numbType) <= 0;
-             i = NumericOperations.sum(i, increment, numbType),k++) {
+             i = NumericOperations.sum(i, increment, numbType), k++) {
 
-            multiplicationTable[0][k] = i;
+            multiplicationTable[0][k] = NumericOperations.convertNumber(i, numbType);
         }
 
-        k = 0;
+        k = 1;
         for (Number i = min; NumericOperations.compare(i, max, numbType) <= 0;
-             i = NumericOperations.sum(i, increment, numbType),k++) {
+             i = NumericOperations.sum(i, increment, numbType), k++) {
 
-            int f = 0;
+
+            int f = 1;
+            multiplicationTable[k][0] = NumericOperations.convertNumber(i, numbType);
             for (Number j = min; NumericOperations.compare(j, max, numbType) <= 0;
-                 j = NumericOperations.sum(j, increment, numbType),f++) {
+                 j = NumericOperations.sum(j, increment, numbType), f++) {
 
                 multiplicationTable[k][f] = NumericOperations.multiply(i, j, numbType);
             }
@@ -36,6 +38,6 @@ public class MultiplicationTableGenerator {
             size++;
         }
 
-        return size;
+        return size + 1;
     }
 }

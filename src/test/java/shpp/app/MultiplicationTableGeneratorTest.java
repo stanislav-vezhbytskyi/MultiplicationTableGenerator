@@ -13,54 +13,77 @@ class MultiplicationTableGeneratorTest {
     }
 
     @Test
-    void byteTest(){
-        Number[][] expected = {{(byte)4,(byte)6},{(byte)6,(byte)9}};
-        Number[][] real = generator.generateTable(2,3,1,"byte");
+    void byteTest() {
+        Number[][] expected = {
+                {null, (byte) 1, (byte) 2},
+                {(byte) 1, (byte) 1, (byte) 2},
+                {(byte) 2, (byte) 2, (byte) 4}};
+        Number[][] real = generator.generateTable(1, 2, 1, "byte");
 
         for (int i = 0; i < expected.length; i++) {
             Assertions.assertArrayEquals(expected[i], real[i], "Arrays at index " + i + " differ");
         }
     }
+
     @Test
-    void shortTest(){
-        Number[][] expected = {{(short)4,(short)6},{(short)6,(short)9}};
-        Number[][] real = generator.generateTable(2,3,1,"short");
+    void shortTest() {
+        Number[][] expected = {
+                {null, (short) 1, (short) 2},
+                {(short) 1, (short) 1, (short) 2},
+                {(short) 2, (short) 2, (short) 4}};
+        Number[][] real = generator.generateTable(1, 2, 1, "short");
 
         for (int i = 0; i < expected.length; i++) {
             Assertions.assertArrayEquals(expected[i], real[i], "Arrays at index " + i + " differ");
         }
     }
+
     @Test
-    void intTest(){
-        Number[][] expected = {{4,6},{6,9}};
-        Number[][] real = generator.generateTable(2,3,1,"int");
+    void intTest() {
+        Number[][] expected = {
+                {null, 1, 2},
+                {1, 1, 2},
+                {2, 2, 4}};
+        Number[][] real = generator.generateTable(1, 2, 1, "int");
 
         for (int i = 0; i < expected.length; i++) {
             Assertions.assertArrayEquals(expected[i], real[i], "Arrays at index " + i + " differ");
         }
     }
+
     @Test
-    void longTest(){
-        Number[][] expected = {{(long)4,(long)6},{(long)6,(long)9}};
-        Number[][] real = generator.generateTable(2,3,1,"long");
+    void longTest() {
+        Number[][] expected = {
+                {null, (long) 1, (long) 2},
+                {(long) 1, (long) 1, (long) 2},
+                {(long) 2, (long) 2, (long) 4}};
+        Number[][] real = generator.generateTable(1, 2, 1, "long");
 
         for (int i = 0; i < expected.length; i++) {
             Assertions.assertArrayEquals(expected[i], real[i], "Arrays at index " + i + " differ");
         }
     }
+
     @Test
-    void floatTest(){
-        Number[][] expected = {{(float)4,(float)6},{(float)6,(float)9}};
-        Number[][] real = generator.generateTable(2,3,1,"float");
+    void floatTest() {
+        Number[][] expected = {
+                {null, (float) 1, (float) 2},
+                {(float) 1, (float) 1, (float) 2},
+                {(float) 2, (float) 2, (float) 4}};
+        Number[][] real = generator.generateTable(1, 2, 1, "float");
 
         for (int i = 0; i < expected.length; i++) {
             Assertions.assertArrayEquals(expected[i], real[i], "Arrays at index " + i + " differ");
         }
     }
+
     @Test
-    void doubleTest(){
-        Number[][] expected = {{(double)4,(double)6},{(double)6,(double)9}};
-        Number[][] real = generator.generateTable(2,3,1,"double");
+    void doubleTest() {
+        Number[][] expected = {
+                {null, (double) 1, (double) 2},
+                {(double) 1, (double) 1, (double) 2},
+                {(double) 2, (double) 2, (double) 4}};
+        Number[][] real = generator.generateTable(1, 2, 1, "double");
 
         for (int i = 0; i < expected.length; i++) {
             Assertions.assertArrayEquals(expected[i], real[i], "Arrays at index " + i + " differ");
