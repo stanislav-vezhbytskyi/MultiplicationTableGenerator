@@ -7,7 +7,7 @@ public class ConsoleOutput {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ConsoleOutput.class);
 
-    public void printTable(Number[][] multiplicationTable) {
+    public void printTable(Number[][] multiplicationTable, Number[] multipliersFiled) {
         if (multiplicationTable == null || multiplicationTable.length == 0 || multiplicationTable[0] == null || multiplicationTable[0].length == 0) {
             LOGGER.error("The table cannot be built");
             return;
@@ -16,17 +16,17 @@ public class ConsoleOutput {
         StringBuilder currentLine = new StringBuilder();
 
         currentLine.append("  | ");
-        for (int i = 1; i < multiplicationTable[0].length; i++) {
-            currentLine.append(multiplicationTable[0][i]).append(" ");
+        for (Number i : multipliersFiled) {
+            currentLine.append(i).append(" ");
         }
 
         LOGGER.info("{}", currentLine);
         LOGGER.info("----------------------------------------");
-        for (int i = 1; i < multiplicationTable.length; i++) {
+        for (int i = 0; i < multiplicationTable.length; i++) {
             currentLine = new StringBuilder();
 
-            currentLine.append(multiplicationTable[i][0]).append(" | ");
-            for (int j = 1; j < multiplicationTable[i].length; j++) {
+            currentLine.append(multipliersFiled[i]).append(" | ");
+            for (int j = 0; j < multiplicationTable[i].length; j++) {
                 currentLine.append(multiplicationTable[i][j]).append(" ");
             }
 
@@ -34,4 +34,16 @@ public class ConsoleOutput {
         }
     }
 
+    public void printLikeList(Number[][] multiplicationTable, Number[] multipliersFiled) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < multiplicationTable.length; i++) {
+
+            for (int j = 0; j < multiplicationTable.length; j++) {
+                sb.append(multipliersFiled[i]).append("*").append(multipliersFiled[j]).append("=")
+                        .append(multiplicationTable[j][i]).append("\n");
+            }
+
+        }
+        LOGGER.info(sb.toString());
+    }
 }

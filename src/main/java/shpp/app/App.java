@@ -15,6 +15,7 @@ public class App {
     private static final String DEFAULT_EXTERNAL_PROPERTY_PATH = "app.properties";
 
     public static void main(String[] args) {
+        //todo: this class is too big
         String numbType = DEFAULT_NUMBER_TYPE;
 
         LOGGER.info("Trying to read printFormat in system parameters");
@@ -42,23 +43,26 @@ public class App {
             LOGGER.error("Incorrect property values",e);
             return;
         }
-        //this class is too big
+
         if(!PropertyValidator.isPropertyCorrect(min,max,increment,numbType)){
             LOGGER.error("Property values is incorrect");
             return;
         }
 
         MultiplicationTableGenerator generator = new MultiplicationTableGenerator();
+
         Number[][] multiplicationTable = null;
+        Number[] multipliersFiled = null;
 
         LOGGER.info("Building multiplication table");
         try {
             multiplicationTable = generator.generateTable(min, max, increment, numbType);
+            multipliersFiled = generator.generateMultipliersField(min,max,increment,numbType);
         } catch (ArithmeticException e) {
             LOGGER.error("Table cannot be built",e);
         }
-
+        //something change
         ConsoleOutput consoleOutput = new ConsoleOutput();
-        consoleOutput.printTable(multiplicationTable);
+        consoleOutput.printTable(multiplicationTable,multipliersFiled);
     }
 }
