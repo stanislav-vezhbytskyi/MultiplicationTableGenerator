@@ -5,27 +5,32 @@ public class MultiplicationTableGenerator {
         int size = countTableSize(min, max, increment, numbType);
         Number[][] multiplicationTable = new Number[size][size];
 
-        int k = 1;
-        for (Number i = min; NumericOperations.compare(i, max, numbType) <= 0;
-             i = NumericOperations.sum(i, increment, numbType), k++) {
+        Number[] multipliersFiled = generateMultipliersField(min, max,increment,numbType);
 
-            multiplicationTable[0][k] = NumericOperations.convertNumber(i, numbType);
-        }
-
-        k = 1;
-        for (Number i = min; NumericOperations.compare(i, max, numbType) <= 0;
-             i = NumericOperations.sum(i, increment, numbType), k++) {
-
-            int f = 1;
-            multiplicationTable[k][0] = NumericOperations.convertNumber(i, numbType);
-            for (Number j = min; NumericOperations.compare(j, max, numbType) <= 0;
-                 j = NumericOperations.sum(j, increment, numbType), f++) {
-
+        int k = 0;
+        for (Number i: multipliersFiled) {
+            int f = 0;
+            for (Number j:multipliersFiled) {
                 multiplicationTable[k][f] = NumericOperations.multiply(i, j, numbType);
+                f++;
             }
+            k++;
         }
 
         return multiplicationTable;
+    }
+
+    public Number[] generateMultipliersField(Number min, Number max, Number increment, String numbType) {
+        int size = countTableSize(min, max, increment, numbType);
+        Number[] multipliersFiled = new Number[size];
+
+        int j = 0;
+        for (Number i = NumericOperations.convertNumber(min,numbType); NumericOperations.compare(i, max, numbType) <= 0;
+             i = NumericOperations.sum(i, increment, numbType), j++) {
+            multipliersFiled[j] = i;
+        }
+
+        return multipliersFiled;
     }
 
     private static int countTableSize(Number min, Number max, Number increment, String numbType) {
@@ -37,6 +42,6 @@ public class MultiplicationTableGenerator {
             size++;
         }
 
-        return size + 1;
+        return size;
     }
 }

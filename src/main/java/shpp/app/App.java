@@ -50,16 +50,19 @@ public class App {
         }
 
         MultiplicationTableGenerator generator = new MultiplicationTableGenerator();
+
         Number[][] multiplicationTable = null;
+        Number[] multipliersFiled = null;
 
         LOGGER.info("Building multiplication table");
         try {
             multiplicationTable = generator.generateTable(min, max, increment, numbType);
+            multipliersFiled = generator.generateMultipliersField(min,max,increment,numbType);
         } catch (ArithmeticException e) {
             LOGGER.error("Table cannot be built",e);
         }
 
         ConsoleOutput consoleOutput = new ConsoleOutput();
-        consoleOutput.printTable(multiplicationTable);
+        consoleOutput.printTable(multiplicationTable,multipliersFiled);
     }
 }
