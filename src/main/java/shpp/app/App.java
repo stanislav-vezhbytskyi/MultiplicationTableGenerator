@@ -17,7 +17,7 @@ public class App {
     public static void main(String[] args) {
         //todo: this class is too big
         String numbType = DEFAULT_NUMBER_TYPE;
-
+        //new
         LOGGER.info("Trying to read printFormat in system parameters");
         if (System.getProperties().containsKey(NAME_OF_SYSTEM_PARAMETER_NUMBER_TYPE)) {
             numbType = System.getProperty(NAME_OF_SYSTEM_PARAMETER_NUMBER_TYPE);
