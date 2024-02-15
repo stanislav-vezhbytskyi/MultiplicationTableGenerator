@@ -15,6 +15,7 @@ public class App {
     private static final String DEFAULT_EXTERNAL_PROPERTY_PATH = "app.properties";
 
     public static void main(String[] args) {
+        //todo: this class is too big
         String numbType = DEFAULT_NUMBER_TYPE;
 
         LOGGER.info("Trying to read printFormat in system parameters");
@@ -42,7 +43,7 @@ public class App {
             LOGGER.error("Incorrect property values",e);
             return;
         }
-        //this class is too big
+
         if(!PropertyValidator.isPropertyCorrect(min,max,increment,numbType)){
             LOGGER.error("Property values is incorrect");
             return;
