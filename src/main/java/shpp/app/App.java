@@ -61,7 +61,7 @@ public class App {
         } catch (ArithmeticException e) {
             LOGGER.error("Table cannot be built",e);
         }
-
+        //something change
         ConsoleOutput consoleOutput = new ConsoleOutput();
         consoleOutput.printTable(multiplicationTable,multipliersFiled);
     }
